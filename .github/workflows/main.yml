@@ -1,0 +1,15 @@
+name: Test Script
+on: workflow_dispatch
+jobs:
+  run_test_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.1.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        script: |
+          echo "I am created via github action worklofw!!!" >> "hello.txt"
